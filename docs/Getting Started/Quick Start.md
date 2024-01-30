@@ -24,9 +24,7 @@ if you use WSL, you need to follow [this instruction](/docs/Getting%20Started/Ho
 ## 3. Try LED flashing
 
 ```ts title="index.ts"
-import { board } from '../utils/board'
-import { attachLed } from '../factory/output/uniqueDevice/led'
-import { SerialPort } from 'serialport'
+import { SerialPort, attachLed, board } from "edison"
 
 board.on('ready', (port: SerialPort) => {
   console.log('Board is ready!')
