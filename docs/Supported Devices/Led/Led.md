@@ -11,34 +11,33 @@ Click Upload button. if you use WSL, you need to follow [this](/docs/Getting%20S
 
 ## 2. Run the LED
 
-```ts title="index.ts"
-import { SerialPort, board, attachLed } from 'edison'
+```tsx title="index.tsx"
+import { Board, Button, Led, render } from "edison"
+import React from "react"
 
-board.on('ready', (port: SerialPort) => {
-  const led = attachLed(port, 12)
-  led.blink(500)
-})
+const App: React.FC = () => {
+  return (
+    <Board>
+      <Led pin={13} blink={500} />
+    </Board>
+  )
+}
+
+render(<App />)
 ```
 
 
 ## 3. execute the program
 ```bash
-$ ts-node index.ts 
+$ npx vite-node index.tsx 
 ```
 
 The LED will blink every 500ms.
 
-You can use `attachLed(port, pin)`
+You can use `<Led />`
 
-| Arguments | Type   | Description      | Default |
+| Props | Type   | Description      | Default |
 |-----------|--------|------------------|---------|
-| `port`      | `SerialPort<AutoDetectTypes>`  | Port information for serial communication with the device     | `None`    |
 | `pin`      | `number`  | Pin number to control current     | `None` |
-
-and return led object. It has three method
-
-| method | Arguments   | Description      | 
-|-----------|----------|------------------|
-| `blink` | `arg1:number` |Blinking at intervals of the interval of the first argument |
-| `on` | |Current flows to the pin number specified by the attachLED function. connect the LED to GND and the above pins, and the LED will be electrified. |
-| `off` | |Shuts off current at specified pin number |
+| `isOn?`      | `boolen`/undefined  | On if LED is true, off if false   | `None` |
+| `blink?`      | `number`/undefined  | Set blinking sensation (ms)     | `None` |

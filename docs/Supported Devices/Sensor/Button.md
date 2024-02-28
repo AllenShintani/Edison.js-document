@@ -8,10 +8,10 @@ Open Arduino IDE.
 `Tools > Serial Port > your port`
 Click Upload button. if you use WSL, you need to follow [this](/docs/Getting%20Started/How%20to%20WSL.md)
 
-## 2. Run the Hall effect sensor
+## 2. Run the Button
 
 ```tsx title="index.tsx"
-import { Board, Led, HallEffectSensor, render} from "edison"
+import { Board, Led, Button, render} from "edison"
 import React, {useState} from "react"
 
 const App: React.FC = () => {
@@ -26,7 +26,7 @@ const App: React.FC = () => {
   }
   return (
     <Board>
-      <HallEffective
+      <Button
         pin={8}
         onPress={handlePress}
         onRelease={handleRelease}
@@ -35,13 +35,13 @@ const App: React.FC = () => {
           pin={13}
           isOn={isOn}
         />
-      </HallEffective>
+      </Button>
     </Board>
   )
 }
 render(<App />)
 ```
-This program will blink the LED when the hall effect sensor is run.
+This program will blink the LED when the button is run.
 
 :::tip
 
@@ -55,13 +55,13 @@ check [this](/docs/API/connectManual.md)
 $ npx vite-node index.tsx 
 ```
 
-You can use `<HallEffective >`
+You can use `<Button >`
 
 | Props | Type   | Description      | Default |
 |-----------|--------|-----------------------|---------|
 | `pin`      | `number`  | Pin number to control current     | `None` |
-| `onPress?`      | `(() => void)`  | Pin number to control current     | `None` |
-| `onRelease?`      | `(() => void)`  | Pin number to control current     | `None` |
+| `onPress?`      | `(() => void)`  | Function executed when a button is pressed     | `None` |
+| `onRelease?`      | `(() => void)`  | Function executed when the button is released    | `None` |
 | `debounceTime?`      | `number`  | Delay for a specified period of time    | `None` |
 | `children`      | `React.ReactNode`  | Child components such as outbut     | `None` |
 

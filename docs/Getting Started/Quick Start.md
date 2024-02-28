@@ -23,18 +23,25 @@ npm install edison
 if you use WSL, you need to follow [this instruction](/docs/Getting%20Started/How%20to%20WSL)
 ## 3. Try LED flashing
 
-```ts title="index.ts"
-import { SerialPort, attachLed, board } from "edison"
+```ts title="index.tsx"
+import { Board, Button, Led, render } from "edison"
+import React from "react"
 
-board.on('ready', (port: SerialPort) => {
-  console.log('Board is ready!')
-  const led = attachLed(port, 12)
-  led.blink(500)
-})
+const App: React.FC = () => {
+  return (
+    <Board>
+      <Led pin={13} blink={500} />
+    </Board>
+  )
+}
+
+render(<App />)
 ```
 
 ## 4. execute the program
+
 ```bash
-$ ts-node index.ts 
+$ npx vite-node index.tsx
 ```
-automatically** and displays your changes.
+
+automatically\*\* and displays your changes.

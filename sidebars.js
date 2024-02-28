@@ -38,12 +38,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'Led',
-          items: ['Supported Devices/Led/Led', 'Supported Devices/Led/RGB-Led'],
+          items: ['Supported Devices/Led/Led'],
         },        
         {
           type: 'category',
           label: 'Sensor',
-          items: ['Supported Devices/Sensor/Pressure Sensor', 'Supported Devices/Sensor/Hall Effect Sensor'],
+          items: ['Supported Devices/Sensor/Hall Effect Sensor','Supported Devices/Sensor/Button'],
         },
       ],
     },

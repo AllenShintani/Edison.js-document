@@ -12,43 +12,63 @@ Click Upload button. if you use WSL, you need to follow [this](/docs/Getting%20S
 
 ### 2. Run the Servo
 
-```ts title="index.ts"
-import { SerialPort, attachServo, board } from "edison"
+```tsx title="index.tsx"
+import React, { useState } from 'react'
+import { Board, Button, Servo, render } from 'edison'
 
-board.on('ready', async (port: SerialPort) => {
-  const servo = attachServo(port, 8)
-  await servo.rotate(50)
-  await servo.rotate(150)
-  await servo.rotate(50)
-  await servo.rotate(150)
-})
+const App: React.FC = () => {
+  const [angle, setAngle] = useState(0)
+
+  const handlePress = () => {
+    setAngle(angle + 10)
+  }
+
+  const handleRelease = () => {
+    if (angle >= 150) {
+      setAngle(0)
+      return
+    }
+    setAngle(angle + 10)
+  }
+  return (
+    <Board>
+      <Button
+        pin={8}
+        onPress={handlePress}
+        onRelease={handleRelease}
+      >
+
+        <Servo
+          pin={10}
+          angle={angle}
+        />
+      </Button>
+    </Board>
+  )
+}
+render(<App />)
+
 ```
 
-The Servo will rotate 50 degrees => 150 degrees => 50 degrees => 150 degrees. 
+Increases the servo angle by 10 when the button is pressed and released, and returns to 0 when the angle exceeds 150.
 
 
 
 ## 3. execute the program
 ```bash
-$ ts-node index.ts 
+$ npx vite-node index.tsx 
 ```
 
-You can use `attachServo(port, pin)`
+You can use `<Servo pin={pin} angle={angle} />`
 
-| Arguments | Type   | Description      | Default |
+| Props | Type   | Description      | Default |
 |-----------|--------|------------------|---------|
-| `port`      | `SerialPort<AutoDetectTypes>`  | Port information for serial communication with the device     | `None`    |
 | `pin`      | `number`  | Pin number to control current     | `None` |
-
-and return servo object. It has one method now.
-
-| method | Arguments   | Description      | 
-|-----------|----------|------------------|
-| `rotate` | `angle:number` |move the motor to a specified angle  |
+| `angle`      | `number`  | Servo direction     | `None` |
 
 :::danger Take care
 
-`rotate` is a method that turns the motor to a specified angle regardless of the current angle.
+`angle` is a method that turns the motor to a specified angle regardless of the current angle.
 If you want to reset the angle at the beginning, use XX.
 
 :::

@@ -2,16 +2,20 @@
 You can use non-genuine Arduino. But you need to set the port manually.
 If you use WSL, you need to follow [this](/docs/Getting%20Started/How%20to%20WSL.md)
 
-```ts title="index.ts"
+```ts title="index.tsx"
 
-import { SerialPort, board, attachLed } from 'edison'
+import { Board, Button, Led, render } from "edison"
+import React from "react"
 
-board.connectManual('/dev/tty***') // *** is your port
+const App: React.FC = () => {
+  return (
+    <Board port={'/dev/tty***'}> // *** is your port
+      <Led pin={13} blink={500} />
+    </Board>
+  )
+}
 
-board.on('ready', (port: SerialPort) => {
-  const led = attachLed(port, 12)
-  led.blink(500)
-})
+render(<App />)
 ```
 
 ## if you use WSL or Mac
@@ -21,12 +25,15 @@ board.on('ready', (port: SerialPort) => {
 
 `Tools` > `Port` > `Com**` and check your port.
 
-```ts title="index.ts"
+```tsx title="index.tsx"
 //example
-board.connectManual('COM8') // *** is your port
+const App: React.FC = () => {
+  return (
+    <Board port={'COM8'}> // *** is your port
+      <Led pin={13} blink={500} />
+    </Board>
+  )
+}
 
-board.on('ready', (port: SerialPort) => {
-  const led = attachLed(port, 12)
-  led.blink(500)
-})
+render(<App />)
 ```
