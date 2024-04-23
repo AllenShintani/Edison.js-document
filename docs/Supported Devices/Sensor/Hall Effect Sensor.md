@@ -17,19 +17,12 @@ import React, {useState} from "react"
 const App: React.FC = () => {
   const [isOn, setIsOn] = useState(false)
 
-  const handlePress = () => {
-    setIsOn(true)
-  }
-
-  const handleRelease = () => {
-    setIsOn(false)
-  }
   return (
-    <Board>
+    <Board port={'/dev/ttyUSB0'}>
       <HallEffective
         pin={8}
-        onPress={handlePress}
-        onRelease={handleRelease}
+        triggered={() => setIsOn(true)}
+        untriggered={() => setIsOn(false)}
       >
         <Led
           pin={13}
@@ -60,9 +53,8 @@ You can use `<HallEffective >`
 | Props | Type   | Description      | Default |
 |-----------|--------|-----------------------|---------|
 | `pin`      | `number`  | Pin number to control current     | `None` |
-| `onPress?`      | `(() => void)`  | Pin number to control current     | `None` |
-| `onRelease?`      | `(() => void)`  | Pin number to control current     | `None` |
-| `debounceTime?`      | `number`  | Delay for a specified period of time    | `None` |
+| `triggered?`      | `(() => void)`  | Pin number to control current     | `None` |
+| `untriggered?`      | `(() => void)`  | Pin number to control current     | `None` |
 | `children`      | `React.ReactNode`  | Child components such as outbut     | `None` |
 
 

@@ -34,8 +34,8 @@ const App: React.FC = () => {
     <Board>
       <Button
         pin={8}
-        onPress={handlePress}
-        onRelease={handleRelease}
+        triggered={handlePress}
+        untriggered={handleRelease}
       >
 
         <Servo

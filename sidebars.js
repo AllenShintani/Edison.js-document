@@ -43,7 +43,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Sensor',
-          items: ['Supported Devices/Sensor/Hall Effect Sensor','Supported Devices/Sensor/Button'],
+          items: ['Supported Devices/Sensor/Collision Sensor','Supported Devices/Sensor/Hall Effect Sensor','Supported Devices/Sensor/Button','Supported Devices/Sensor/PIR Motion Sensor','Supported Devices/Sensor/Photo Interrupter Sensor','Supported Devices/Sensor/Digital Tilt Sensor'],
         },
       ],
     },

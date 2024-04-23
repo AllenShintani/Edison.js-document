@@ -8,33 +8,33 @@ Open Arduino IDE.
 `Tools > Serial Port > your port`
 Click Upload button. if you use WSL, you need to follow [this](/docs/Getting%20Started/How%20to%20WSL.md)
 
-## 2. Run the Button
+## 2. Run the Collision sensor
 
 ```tsx title="index.tsx"
-import { Board, Led, Button, render} from "edison"
+import { Board, Led, Collision, render} from "edison"
 import React, {useState} from "react"
 
 const App: React.FC = () => {
-  const [ledOne, setLedOne] = useState(false)
+  const [isOn, setIsOn] = useState(false)
 
   return (
     <Board port={'/dev/ttyUSB0'}>
-      <Button
+      <Collision
         pin={8}
-        triggered={() => setLedOne(true)}
-        untriggered={() => setLedOne(false)}
+        triggered={() => setIsOn(true)}
+        untriggered={() => setIsOn(false)}
       >
         <Led
           pin={13}
-          isOn={ledOne}
+          isOn={isOn}
         />
-      </Button>
+      </Collision>
     </Board>
   )
 }
 render(<App />)
 ```
-This program will blink the LED when the button is run.
+This program will blink the LED when the collision sensor is run.
 
 :::tip
 
@@ -48,14 +48,13 @@ check [this](/docs/API/connectManual.md)
 $ npx vite-node index.tsx 
 ```
 
-You can use `<Button >`
+You can use `<Collision >`
 
 | Props | Type   | Description      | Default |
 |-----------|--------|-----------------------|---------|
 | `pin`      | `number`  | Pin number to control current     | `None` |
-| `triggered?`      | `(() => void)`  | Function executed when a button is pressed     | `None` |
-| `untriggered?`      | `(() => void)`  | Function executed when the button is released    | `None` |
-| `debounceTime?`      | `number`  | Delay for a specified period of time    | `None` |
+| `triggered?`      | `(() => void)`  | Pin number to control current     | `None` |
+| `untriggered?`      | `(() => void)`  | Pin number to control current     | `None` |
 | `children`      | `React.ReactNode`  | Child components such as outbut     | `None` |
 
 
