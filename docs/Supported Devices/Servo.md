@@ -31,7 +31,7 @@ const App: React.FC = () => {
     setAngle(angle + 10)
   }
   return (
-    <Board>
+    <Board port={'/dev/tty***'}, baudRate={57600}> 
       <Button
         pin={8}
         triggered={handlePress}

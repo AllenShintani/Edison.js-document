@@ -9,7 +9,7 @@ import React from "react"
 
 const App: React.FC = () => {
   return (
-    <Board port={'/dev/tty***'}> // *** is your port
+    <Board port={'/dev/tty***'}, baudRate={57600}> // *** is your port.
       <Led pin={13} blink={500} />
     </Board>
   )
@@ -29,7 +29,7 @@ render(<App />)
 //example
 const App: React.FC = () => {
   return (
-    <Board port={'COM8'}> // *** is your port
+    <Board port={'COM8'}, baudRate={57600}> // *** is your port
       <Led pin={13} blink={500} />
     </Board>
   )

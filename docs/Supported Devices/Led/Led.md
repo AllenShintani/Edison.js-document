@@ -17,7 +17,7 @@ import React from "react"
 
 const App: React.FC = () => {
   return (
-    <Board>
+    <Board port={'/dev/tty***'}, baudRate={57600}> 
       <Led pin={13} blink={500} />
     </Board>
   )
