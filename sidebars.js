@@ -26,11 +26,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'API',
-      items: ['API/output', 'API/connectManual'],
-    },
-    {
-      type: 'category',
       label: 'Supported Devices',
       items: [
         'Supported Devices/Buzzer',
