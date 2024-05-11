@@ -36,12 +36,6 @@ render(<App />)
 ```
 This program will blink the LED when the button is run.
 
-:::tip
-
-if you use non-genuine Arduino, you need to set the port manually.
-check [this](/docs/API/connectManual.md)
-
-:::
 
 ## 3. execute the program
 ```bash
