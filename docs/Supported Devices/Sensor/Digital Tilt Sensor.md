@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [isOn, setIsOn] = useState(false)
 
   return (
-    <Board port={'/dev/tty***'}, baudRate={57600}> 
+    <Board port={'/dev/tty***'} baudRate={57600}> 
       <DigitalTilt
         pin={8}
         triggered={() => {

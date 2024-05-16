@@ -29,7 +29,7 @@ import React from "react"
 
 const App: React.FC = () => {
   return (
-    <Board port={'/dev/tty***'}, baudRate={57600}> 
+    <Board port={'/dev/tty***'} baudRate={57600}> 
       <Led pin={13} blink={500} />
     </Board>
   )
