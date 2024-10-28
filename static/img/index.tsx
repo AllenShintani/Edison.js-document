@@ -31,7 +31,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Developer friendly:',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/React-icon.svg').default,
     description: (
       <>
         This library is concerned with ease of use. Our mission is not to chase a few tenths of a millisecond, but to make it extensible and to give shape to what we like.

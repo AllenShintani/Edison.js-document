@@ -92,7 +92,7 @@ const config = {
           },
           {
             position: 'right',
-            href: 'https://discord.gg/eHB5dBkZyW',
+            href: 'https://discord.gg/BDDgnQYbCE',
             html: '<img src="/img/discord-icon.svg" alt="discord" />'
           }
         ],
@@ -118,7 +118,7 @@ const config = {
               },
               {
                 label: 'Discord',
-                href: 'https://discord.gg/eHB5dBkZyW',
+                href: 'https://discord.gg/BDDgnQYbCE',
               },
               {
                 label: 'Twitter',
